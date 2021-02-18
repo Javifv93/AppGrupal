@@ -9,7 +9,6 @@
         android:id="@+id/textTelefono"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/_telefono"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"

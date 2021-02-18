@@ -12,9 +12,7 @@ public class Preferencias extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new PreferenciasFragment())
-                .commit();
+        addPreferencesFromResource(R.xml.preferencias);
     }
 
     @Override
@@ -24,18 +22,20 @@ public class Preferencias extends PreferenceActivity {
     }
 
     public void update(){
-        // TODO: 18/02/2021 HAY QUE METER LA NUEVA CONTRASEÑA EN LA LISTA DE USUARIOS SUSTITUYENDO LA ANTIGUA
-        // TODO: 18/02/2021 MIRAR QUE ESTO FUNCIONE
-        SharedPreferences sp = getSharedPreferences("preferenciasUsuario", Context.MODE_PRIVATE);
-        SharedPreferences.Editor sp_editor = sp.edit();
+        SharedPreferences sp_preferenciasUsuario = getSharedPreferences("preferenciasUsuario", Context.MODE_PRIVATE);
+        SharedPreferences.Editor sp_editor_pref = sp_preferenciasUsuario.edit();
 
         String telefonoEmergencia = ((EditTextPreference) findPreference("phonellama")).getText();
-        sp_editor.putString("phonellama", telefonoEmergencia);
+        sp_editor_pref.putString("phonellama", telefonoEmergencia);
         String smsEmergencia = ((EditTextPreference) findPreference("phonesms")).getText();
-        sp_editor.putString("phonesms", smsEmergencia);
+        sp_editor_pref.putString("phonesms", smsEmergencia);
         String correoEmergencia = ((EditTextPreference) findPreference("mail")).getText();
-        sp_editor.putString("mail", correoEmergencia);
+        sp_editor_pref.putString("mail", correoEmergencia);
 
-        sp_editor.commit();
+        sp_editor_pref.commit();
+
+        System.out.println("LLAMADA: "+telefonoEmergencia+" SMS: "+smsEmergencia+" CORREO: "+correoEmergencia);
+
+        sp_editor_pref.commit();
     }
 }

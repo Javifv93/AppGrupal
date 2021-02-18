@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -12,10 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-public class Sms extends AppCompatActivity {
+public class Sms extends AppCompatActivity implements LocationListener{
     ImageButton btnEnviar;
     TextView txtTelefono, txtLatitud, txtLongitud, txtPrecision, txtAltura;
     LocationManager localizador;
@@ -24,7 +26,7 @@ public class Sms extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sms);
 
         btnEnviar = findViewById(R.id.buttonEnviarSms);
         txtTelefono = findViewById(R.id.textTelefono);
@@ -78,7 +80,7 @@ public class Sms extends AppCompatActivity {
         }
 
         localizador = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+        localizador.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 5, this);
         localizacion = localizador.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         txtLatitud.setText(String.valueOf(localizacion.getLatitude()));
@@ -90,5 +92,10 @@ public class Sms extends AppCompatActivity {
                 ",Altitud: "+ txtAltura.getText()+"Precision: "+txtPrecision.getText();
 
         return texto;
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+
     }
 }
