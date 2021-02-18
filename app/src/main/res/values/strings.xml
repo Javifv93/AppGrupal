@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AppGrupal</string>
+    <string name="prueba_de_envio_de_email">Prueba de envio de email</string>
+    <string name ="direccion_email">programersrepositorio@gmail.com</string>
+    <string name="foto">foto</string>
+    <string name="nombre_foto">Nombre Foto</string>
+    <string name="_telefono">666109294</string>
+    <string name="botonsms">botonSMS</string>
+    <string name="prueba_de_sms">Prueba de SMS</string>
+    <string name="latitud">Latitud:</string>
+    <string name="longitud">Longitud:</string>
+    <string name="precision">Precision:</string>
+    <string name="altitud">Altitud:</string>
+</resources>
