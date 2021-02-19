@@ -18,11 +18,6 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        // TODO: 18/02/2021 IMPLEMENTAR BOTONES DE ACCESO A LLAMADA, SMS y CORREO 
-        // TODO: 18/02/2021 LLAMADA COJERA EL TELEFONO DE EMERGENCIA Y LO USARä PARA LLAMAR 
-        // TODO: 18/02/2021 SMS OBTENDRA LA UBICACION Y LA MANDARA EN SMS 
-        // TODO: 18/02/2021 CORREO ABRIRA LA CAMARA, SACARA UNA FOTO Y LA MANDARA POR CORREO
-
         btnPreferencias= findViewById(R.id.preferencias);  
         btnPreferencias.setOnClickListener(new View.OnClickListener() {
             @Override

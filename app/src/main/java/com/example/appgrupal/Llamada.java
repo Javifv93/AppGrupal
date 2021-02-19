@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.content.Intent;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Llamada extends AppCompatActivity {
+    private EditText mPhoneNoEt;
 
     final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
     @Override
@@ -24,7 +27,9 @@ public class Llamada extends AppCompatActivity {
         setContentView(R.layout.activity_llamadas);
         Button mDialButton = (Button) findViewById(R.id.btn_dial);
 
-
+        SharedPreferences sp = getSharedPreferences("preferenciasUsuario", Context.MODE_PRIVATE);
+        mPhoneNoEt = mPhoneNoEt = (EditText) findViewById(R.id.et_phone_no);
+        mPhoneNoEt.setText((sp.getString("phonellama", null)!=null)?sp.getString("phonellama", null):"");
 
         mDialButton.setOnClickListener(new View.OnClickListener() {
 
@@ -63,7 +68,6 @@ public class Llamada extends AppCompatActivity {
     private void callPhone() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-            final EditText mPhoneNoEt = (EditText) findViewById(R.id.et_phone_no);
             String phoneNo = mPhoneNoEt.getText().toString();
             if (!TextUtils.isEmpty(phoneNo)) {
                 String dial = "tel:" + phoneNo;
