@@ -1,6 +1,8 @@
 package com.example.appgrupal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,14 +50,15 @@ public class Registro  extends AppCompatActivity
 
                 if(ETpass.getText().toString().equals(ETconfirmar.getText().toString())&&ETpass.length()>0)
                 {
-                    if((ETnombre.length()>0)&&(ETapellidos.length()>0)&&(ETcorreo.length()>0)) // TODO: 18/02/2021 IMPLEMENTAR GUARDADO DE USUARIO POR SHAREDPREFERENCES EN VEZ DE PASARLO POR INTENT 
+                    if((ETnombre.length()>0)&&(ETapellidos.length()>0)&&(ETcorreo.length()>0))
                     {
-                        Usuario nuevoUsuario = new Usuario(ETnombre.getText().toString(),
-                                ETapellidos.getText().toString(),
-                                ETcorreo.getText().toString(),
-                                ETpass.getText().toString());
-                        intnt.putExtra("Usuario", nuevoUsuario);
-                        setResult(RESULT_OK,intnt);
+                        SharedPreferences sp = getSharedPreferences("datosUsuario", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor sp_editor = sp.edit();
+                        sp_editor.putString("nombre", ETnombre.getText().toString());
+                        sp_editor.putString("apellidos", ETapellidos.getText().toString());
+                        sp_editor.putString("correo", ETcorreo.getText().toString());
+                        sp_editor.putString("pass", ETpass.getText().toString());
+                        sp_editor.commit();
                         finish();
                     }
                     else

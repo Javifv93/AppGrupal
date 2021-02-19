@@ -2,16 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:key="Categoria1"
-        android:title="Credenciales">
-
-        <EditTextPreference
-            android:key="pwd"
-            android:title="Contraseña"
-            android:summary="Contraseña"
-            android:dialogTitle="Introduce la contraseña" />
-    </PreferenceCategory>
-    <PreferenceCategory
         android:key="Categoria2"
         android:title="Contactos de emergencia">
 
@@ -19,16 +9,16 @@
             android:key="phonellama"
             android:title="LLamada"
             android:summary="Telefono"
-            android:dialogTitle="Introduce el telefono para de un contacto al que llamar en caso de una emergencia" />
+            android:dialogTitle="Introduce un teléfono de contacto para llamar" />
     </PreferenceCategory>
         <EditTextPreference
             android:key="phonesms"
             android:title="SMS"
             android:summary="Telefono"
-            android:dialogTitle="Introduce el telefono para de un contacto al que mandar un SMS con tu ubicación en caso de una emergencia" />
+            android:dialogTitle="Introduce un teléfono de contacto para mandar SMS" />
         <EditTextPreference
             android:key="mail"
             android:title="Correo"
             android:summary="Correo"
-            android:dialogTitle="Introduce el correo electrónico al que mandar una fotografía en caso de una emergencia" />
+            android:dialogTitle="Introduce el correo electrónico al que mandar una fotografía" />
 </PreferenceScreen>

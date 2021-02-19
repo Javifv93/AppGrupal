@@ -78,7 +78,6 @@ public class Camara extends AppCompatActivity {
         });
     }
 
-
     //metodo para crear la ruta donde se va a guardar la imagen
     private File crearRutaFoto() throws IOException {
 
